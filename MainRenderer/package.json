@@ -1,0 +1,15 @@
+{
+  "name": "mainrenderer",
+  "version": "1.0.0",
+  "description": "Another one",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Kshitij Sharma",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.1.2"
+  }
+}
