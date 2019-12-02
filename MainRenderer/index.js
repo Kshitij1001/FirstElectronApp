@@ -4,6 +4,9 @@ let video;
 // For displaying the label
 let label = "waiting...";
 let label2 = 'waiting';
+let jo;
+let tDiff = 1;
+let txt = 'hello';
 // The classifier
 let classifier;
 // URL of my phuking trained model
@@ -15,8 +18,9 @@ function preload() {
 }
 
 function setup() {
+  jo = (new Date()).getTime();
   let can = createCanvas(640, 520);
-  can.position(350,60);
+  can.position(350,100);
   // Create the video
   video = createCapture(VIDEO);
   video.hide();
@@ -41,6 +45,10 @@ function draw() {
   textAlign(CENTER, CENTER);
   fill(255);
   text(label, width / 2, height - 16);
+  tDiff = (new Date()).getTime()-jo;
+  tDiff/=1000;
+  txt = 'Time until last Dab move: '+ tDiff + ' Sec.';
+  document.querySelector('.yomama').innerHTML = txt;
 }
 
 // STEP 3: Get the classification!
@@ -54,6 +62,9 @@ function gotResults(error, results) {
   label = results[0].label;
   if(label != label2){
     console.log(label);
+    if(label==="DAB"){
+      jo = (new Date).getTime();
+    }
     label2 = label;
   }
   classifyVideo();
